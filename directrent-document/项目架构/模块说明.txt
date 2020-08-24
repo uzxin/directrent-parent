@@ -1,0 +1,18 @@
+1.directrent-auth
+    权限控制
+2.directrent-common
+    公共服务
+3.directrent-dataScrap
+    数据爬取
+4.directrent-document
+    项目文档
+5.directrent-eureka
+    服务注册中心
+6.directrent-gateway
+    网关
+7.directrent-userCenter-tenant
+    用户中心（租客）
+8.directrent-userCenter-landlord
+    用户中心（房东）
+9.directrent-middle-service
+    中台服务，包括短信发送

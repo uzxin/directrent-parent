@@ -1,0 +1,15 @@
+server:
+  port: 9002
+spring:
+  application:
+    name: directrent-gateway
+  devtools:
+    restart:
+      enabled: true
+  cloud:
+    gateway:
+      routes:
+        - id: neo_route
+          uri: http://www.ityouknow.com
+          predicates:
+            - Path=/spring-cloud

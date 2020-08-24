@@ -1,0 +1,7 @@
+eureka注册中心：8000
+
+auth模块：9005
+
+common模块：9001
+
+gateway模块：9002

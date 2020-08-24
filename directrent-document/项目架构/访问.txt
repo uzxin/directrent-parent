@@ -1,0 +1,5 @@
+eureka注册中心：http://localhost:8000
+
+springboot-admin：http://localhost:9001
+
+druid监控中心：http://localhost:9001/druid（账号密码都是admin）
