@@ -119,7 +119,7 @@
         <module>directrent-userCenter-tenant</module>
         <module>directrent-userCenter-landlord</module>
         <module>directrent-middle-service</module>
-        <module>directren-thouse</module>
+        <module>directrent-house</module>
         <!--<module>directrent-document</module>-->
     </modules>
 </project>
