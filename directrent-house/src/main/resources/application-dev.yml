@@ -43,7 +43,7 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://114.55.28.2:8000//eureka/
+      defaultZone: http://114.55.28.2:8000/eureka/
 feign:
   hystrix:
     enabled: true

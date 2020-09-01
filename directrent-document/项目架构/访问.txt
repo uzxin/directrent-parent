@@ -1,5 +1,5 @@
 eureka注册中心：http://114.55.28.2:8000
 
-springboot-admin：http://localhost:9001
+springboot-admin：http://www.directrent.com:9001
 
-druid监控中心：http://localhost:9001/druid（账号密码都是admin）
+druid监控中心：http://www.directrent.com:9001/druid（账号密码都是admin）

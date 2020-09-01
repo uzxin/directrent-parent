@@ -1,13 +1,12 @@
 package com.directrent.common.config;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.util.ResourceUtils;
 import org.springframework.web.servlet.config.annotation.*;
 
 /**
  * @description: web配置类
  * @author: YX
- * @date: 2020/8/26 0026 22:12
+ * @date: 2020/8/26 22:12
  */
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
@@ -29,19 +28,23 @@ public class WebMvcConfig implements WebMvcConfigurer {
      *   resources:
      *     static-locations: classpath:/static/
      */
-    /*@Override
+    @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/upload/**","/**")
-                .addResourceLocations("classpath:/static/", "file:"+ ResourceUtils.getFile("classpath:").getParent()+"/upload/");
-    }*/
+        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+    }
 
-    //视图映射
+    /**
+     * 视图映射
+     */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("redirect:/index.html");
         registry.addViewController("/index").setViewName("redirect:/index.html");
     }
 
+    /**
+     * 配置拦截器
+     */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         // 通过registry来注册拦截器，通过addPathPatterns来添加拦截路径
