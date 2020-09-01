@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>消息通知</title>
     <link rel="stylesheet" href="../../../assets/libs/layui/css/layui.css"/>
-    <link rel="stylesheet" href="../../../assets/module/admin.css?v=318"/>
+    <link rel="stylesheet" href="../../../assets/module/admin.css?v=315"/>
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -23,6 +23,13 @@
     </style>
 </head>
 <body>
+
+<!-- 加载动画 -->
+<div class="page-loading">
+    <div class="ball-loader">
+        <span></span><span></span><span></span><span></span>
+    </div>
+</div>
 
 <!-- 正文开始 -->
 <div class="layui-fluid">
@@ -227,7 +234,7 @@
 
 <!-- js部分 -->
 <script type="text/javascript" src="../../../assets/libs/layui/layui.js"></script>
-<script type="text/javascript" src="../../../assets/js/common.js?v=318"></script>
+<script type="text/javascript" src="../../../assets/js/common.js?v=315"></script>
 <script>
     layui.use(['form', 'notice'], function () {
         var $ = layui.jquery;
@@ -285,7 +292,6 @@
                 image: 'https://pic.qqtn.com/up/2018-9/15367146917869444.jpg',
                 imageWidth: 71,
                 title: '消息通知',
-                maxWidth: '300px',
                 message: '你有新的消息，请注意查收!'
             });
         });
@@ -294,10 +300,6 @@
                 title: '消息通知',
                 message: '你有新的消息，请注意查收!',
                 timeout: false,
-                pauseOnHover: false,
-                resetOnHover: false,
-                progressBar: false,
-                maxWidth: '300px',
                 buttons: [['<button>Btn1</button>', function () {
                     notice.msg('点击了按钮一', {icon: 5});
                 }], ['<button>Btn2</button>', function () {
@@ -315,8 +317,6 @@
             }
             data.field.title = '消息通知';
             data.field.message = '你有新的消息，请注意查收!';
-            data.field.pauseOnHover = false;
-            data.field.resetOnHover = false;
             notice[data.field.noticeType](data.field);
             return false;
         });

@@ -7,6 +7,10 @@
 	http://www.opensource.org/licenses/mit-license.php
 	ben@xoxco.com
 */
+/**
+ * 标签输入框模块
+ * date:2019-07-12   License By http://easyweb.vip
+ */
 (function (factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.

@@ -6,9 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title></title>
     <link rel="stylesheet" href="../../assets/libs/layui/css/layui.css"/>
-    <link rel="stylesheet" href="../../assets/module/admin.css?v=318"/>
+    <link rel="stylesheet" href="../../assets/module/admin.css?v=315"/>
 </head>
 <body>
+
+<!-- 加载动画 -->
+<div class="page-loading">
+    <div class="ball-loader">
+        <span></span><span></span><span></span><span></span>
+    </div>
+</div>
 
 <!-- 正文开始 -->
 <div class="layui-fluid">
@@ -18,26 +25,22 @@
             <div class="layui-form toolbar">
                 <div class="layui-form-item">
                     <div class="layui-inline">
-                        <button id="eTbCrudAddBtn" class="layui-btn icon-btn"><i class="layui-icon">&#xe654;</i>添加
-                        </button>
-                        <button id="eTbCrudSubmitBtn" class="layui-btn icon-btn"><i class="layui-icon">&#xe609;</i>提交
-                        </button>
+                        <button id="btnAdd" class="layui-btn icon-btn"><i class="layui-icon">&#xe654;</i>添加</button>
+                        <button id="btnSubmit" class="layui-btn icon-btn"><i class="layui-icon">&#xe609;</i>提交</button>
                     </div>
                 </div>
             </div>
-            <table id="eTbCrudTable" lay-filter="eTbCrudTable"></table>
-        </div>
-    </div>
-    <div class="layui-card">
-        <div class="layui-card-body">
-            这是一个纯前端对表格进行CRUD的例子。
+
+            <table id="tb1" lay-filter="tb1"></table>
+
+            <blockquote class="layui-elem-quote" style="margin-top: 15px;">这是一个纯前端对表格进行CRUD的例子。</blockquote>
         </div>
     </div>
 </div>
 
 <!-- 表单弹窗 -->
-<script type="text/html" id="eTbCrudEditDialog">
-    <form id="eTbCrudEditForm" lay-filter="eTbCrudEditForm" class="layui-form model-form">
+<script type="text/html" id="modelUser">
+    <form id="modelUserForm" lay-filter="modelUserForm" class="layui-form model-form">
         <div class="layui-form-item">
             <label class="layui-form-label">姓名</label>
             <div class="layui-input-block">
@@ -60,20 +63,20 @@
             </div>
         </div>
         <div class="layui-form-item text-right">
-            <button class="layui-btn layui-btn-primary" type="button" ew-event="closeDialog">取消</button>
-            <button class="layui-btn" lay-filter="eTbCrudEditSubmit" lay-submit>保存</button>
+            <button class="layui-btn layui-btn-primary" type="button" ew-event="closePageDialog">取消</button>
+            <button class="layui-btn" lay-filter="modelSubmitUser" lay-submit>保存</button>
         </div>
     </form>
 </script>
 
 <!-- 表格操作列 -->
-<script type="text/html" id="eTbCrudTbBar">
+<script type="text/html" id="tableBar">
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
 <!-- js部分 -->
 <script type="text/javascript" src="../../assets/libs/layui/layui.js"></script>
-<script type="text/javascript" src="../../assets/js/common.js?v=318"></script>
+<script type="text/javascript" src="../../assets/js/common.js?v=315"></script>
 <script>
     layui.use(['layer', 'table', 'admin', 'form'], function () {
         var $ = layui.jquery;
@@ -85,7 +88,7 @@
         var mDataList = [];
 
         var insTb = table.render({
-            elem: '#eTbCrudTable',
+            elem: '#tb1',
             data: [],
             page: true,
             cellMinWidth: 100,
@@ -94,16 +97,16 @@
                 {field: 'name', title: '姓名'},
                 {field: 'phone', title: '手机号'},
                 {field: 'sex', title: '性别'},
-                {align: 'center', toolbar: '#eTbCrudTbBar', title: '操作', minWidth: 200}
+                {align: 'center', toolbar: '#tableBar', title: '操作', minWidth: 200}
             ]]
         });
 
-        $('#eTbCrudAddBtn').click(function () {
+        $('#btnAdd').click(function () {
             showEditModel();
         });
 
         // 工具条点击事件
-        table.on('tool(eTbCrudTable)', function (obj) {
+        table.on('tool(tb1)', function (obj) {
             var data = obj.data;
             var layEvent = obj.event;
             if (layEvent === 'edit') { // 修改
@@ -124,10 +127,10 @@
             admin.open({
                 type: 1,
                 title: mData ? '修改' : '添加',
-                content: $('#eTbCrudEditDialog').html(),
+                content: $('#modelUser').html(),
                 success: function (layero, dIndex) {
-                    form.val('eTbCrudEditForm', mData);
-                    form.on('submit(eTbCrudEditSubmit)', function (data) {
+                    form.val('modelUserForm', mData);
+                    form.on('submit(modelSubmitUser)', function (data) {
                         if (mData) {
                             for (var i = 0; i < mDataList.length; i++) {
                                 if (mDataList[i].id == mData.id) {
@@ -149,7 +152,7 @@
             });
         }
 
-        $('#eTbCrudSubmitBtn').click(function () {
+        $('#btnSubmit').click(function () {
             layer.alert(JSON.stringify(mDataList));
         });
 

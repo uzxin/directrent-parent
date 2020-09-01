@@ -4,6 +4,10 @@
  * Copyright (c) Tigran Sargsyan
  * Licensed MIT
  */
+/**
+ * 圆形进度条模块
+ * date:2019-08-08   License By http://easyweb.vip
+ */
 layui.define(function (exports) {
 
     "use strict";

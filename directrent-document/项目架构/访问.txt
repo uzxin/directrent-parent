@@ -1,4 +1,4 @@
-eureka注册中心：http://localhost:8000
+eureka注册中心：http://114.55.28.2:8000
 
 springboot-admin：http://localhost:9001
 
