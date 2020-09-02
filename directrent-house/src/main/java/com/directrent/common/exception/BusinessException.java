@@ -7,9 +7,9 @@ package com.directrent.common.exception;
  */
 public class BusinessException extends BaseException {
 
-    private ExceptionDefine exceptionDefine;
+    private ExceptionDefin exceptionDefine;
 
-    public BusinessException(ExceptionDefine exceptionDefine){
+    public BusinessException(ExceptionDefin exceptionDefine){
         super(exceptionDefine.getCode(), exceptionDefine.getMsg());
         this.exceptionDefine = exceptionDefine;
     }
@@ -18,7 +18,7 @@ public class BusinessException extends BaseException {
         super(code, msg);
     }
 
-    public ExceptionDefine getExceptionDefine() {
+    public ExceptionDefin getExceptionDefine() {
         return exceptionDefine;
     }
 }

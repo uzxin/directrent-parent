@@ -16,7 +16,7 @@ public class BaseException extends RuntimeException {
         this.msg = msg;
     }
 
-    public BaseException(ExceptionDefine exceptionDefine){
+    public BaseException(ExceptionDefin exceptionDefine){
         super("ErrorCode:" + exceptionDefine.getCode() + ",ErrorMsg:" + exceptionDefine.getMsg());
         this.code = exceptionDefine.getCode();
         this.msg = exceptionDefine.getMsg();
