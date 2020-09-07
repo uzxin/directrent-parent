@@ -1,6 +1,7 @@
 package com.directrent;
 
 import lombok.extern.slf4j.Slf4j;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
@@ -14,6 +15,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  */
 
 @SpringBootApplication
+@MapperScan("com.directrent.**.dao")
 @EnableEurekaClient
 @EnableFeignClients
 @EnableCircuitBreaker//SpringCloud中使用断路器，需要加上此注解

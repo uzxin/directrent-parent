@@ -56,6 +56,17 @@
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
         </dependency>
+        <!-- zxing生成二维码 -->
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>core</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>javase</artifactId>
+            <version>3.2.1</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -89,6 +100,15 @@
             </plugin>
         </plugins>
         <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                    <include>**/*.properties</include>
+                    <include>**/*.yml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
             <resource>
                 <directory>src/main/resources</directory>
                 <!-- 处理文件时替换文件中的变量 -->

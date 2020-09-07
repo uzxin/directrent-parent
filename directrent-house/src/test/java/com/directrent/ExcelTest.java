@@ -1,14 +1,19 @@
-package com.directrent.test;
+package com.directrent;
 
 import com.directrent.common.exception.ExcelException;
 import com.directrent.common.utils.WorkerUtil;
 import com.directrent.common.utils.excel.ExcelUtil;
+import com.directrent.house.dao.HouseBaseInfoDao;
 import com.directrent.house.domain.HouseBaseInfo;
 import com.directrent.house.dto.HouseBaseInfoDTO;
 import org.apache.http.entity.ContentType;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -26,7 +31,12 @@ import java.util.regex.Pattern;
  * @date: 2020/09/02 20:59
  */
 @SpringBootTest
+@RunWith(SpringJUnit4ClassRunner.class)
+@WebAppConfiguration
 public class ExcelTest {
+
+    @Autowired
+    private HouseBaseInfoDao houseBaseInfoDao;
 
     @Test
     public void importExcelTest() throws IOException, ExcelException {
@@ -60,9 +70,8 @@ public class ExcelTest {
             System.out.println("===============第"+i+"条数据组装完成");
             houses.add(house);
         }
-        houses.forEach(house -> {
-            System.out.println(house);
-        });
+        int i = houseBaseInfoDao.batchInsert(houses);
+        System.out.println("成功导入"+i+"条数据");
     }
 
     /**
@@ -79,8 +88,6 @@ public class ExcelTest {
     public Byte elevatorConvert(String elevator){
         if (elevator.equals("有")){
             return 1;
-        }else if (elevator.equals("无")){
-            return 0;
         }
         return 0;
     }

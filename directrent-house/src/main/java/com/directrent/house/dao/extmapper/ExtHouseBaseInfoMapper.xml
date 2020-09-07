@@ -2,4 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.directrent.house.dao.extmapper.ExtHouseBaseInfoMapper">
 
+    <sql id="Base_Column_List">
+        id, name, area, towards, unit_type, position, floor, elevator, build_year, door_lock_type,
+        greening_rate, description, price, create_time, create_user, update_time
+    </sql>
+
+    <sql id="batchInsert_Column_List">
+        id, name, area, towards, unit_type, position, floor, elevator, build_year, door_lock_type,
+        greening_rate, description, price, create_user
+    </sql>
+
+    <insert id="batchInsert" parameterType="java.util.List" >
+        INSERT INTO house_base_info (<include refid="batchInsert_Column_List" />)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.id},#{item.name},#{item.area},#{item.towards},#{item.unitType},
+            #{item.position},#{item.floor},#{item.elevator},#{item.buildYear},
+            #{item.doorLockType},#{item.greeningRate},#{item.description},#{item.price},#{item.createUser})
+        </foreach>
+    </insert>
 </mapper>
