@@ -6,4 +6,4 @@ common模块：9001
 
 gateway模块：9002
 
-house模块：80
+house模块：8001

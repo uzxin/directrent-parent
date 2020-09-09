@@ -27,4 +27,9 @@ public class HouseBaseInfoController {
         List<HouseBaseInfo> houseBaseInfos = houseBaseInfoService.list();
         return new LayuiResult(0,"", houseBaseInfos.size(), houseBaseInfos);
     }
+
+    @GetMapping("test")
+    public LayuiResult test(){
+        return LayuiResult.ok("uzxin");
+    }
 }
