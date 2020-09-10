@@ -30,6 +30,6 @@ public class HouseBaseInfoController {
 
     @GetMapping("test")
     public LayuiResult test(){
-        return LayuiResult.ok("uzxin111222");
+        return LayuiResult.ok("uzxin111222333");
     }
 }
