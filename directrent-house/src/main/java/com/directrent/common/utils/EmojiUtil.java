@@ -1,4 +1,4 @@
-package com.just.butterfly.biz.common.util;
+package com.directrent.common.utils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
