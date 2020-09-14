@@ -4,10 +4,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @PackageName: com.just.butterfly.biz.common.util
- * @Description: 过滤表情符
- * @author: traveller
- * @date: 2019/2/19 11:08
+ * @description: 过滤表情
+ * @author: YX
+ * @date: 2020/09/10 21:22
  */
 public class EmojiUtil {
 

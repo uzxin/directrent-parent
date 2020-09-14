@@ -2,6 +2,11 @@ package com.directrent.common.utils;
 
 import java.security.MessageDigest;
 
+/**
+ * @description: MD5工具类
+ * @author: YX
+ * @date: 2020/09/07 11:23
+ */
 public class Md5Utils {
 
 	/**

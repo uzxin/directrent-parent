@@ -32,7 +32,7 @@
                         password="${spring.datasource.password}">
         </jdbcConnection>-->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://114.55.28.2:3306/directrent_house?nullCatalogMeansCurrent=true"
+                        connectionURL="jdbc:mysql://rm-2vc14p10fe07522lheo.mysql.cn-chengdu.rds.aliyuncs.com:3306/directrent_house?nullCatalogMeansCurrent=true"
                         userId="directrent"
                         password="directrent">
         </jdbcConnection>
@@ -61,7 +61,7 @@
         </javaClientGenerator>
 
         <!-- 要生成实体类和mapper的表 -->
-        <table tableName="house_base_info" schema="directrent_house"></table>
+        <table tableName="house_image" schema="directrent_house"></table>
 
     </context>
 </generatorConfiguration>

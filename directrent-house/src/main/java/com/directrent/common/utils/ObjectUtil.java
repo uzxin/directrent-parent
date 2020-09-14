@@ -9,12 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @PackageName: com.just.butterfly.biz.common.util
- * @Description:
- * @author: traveller
- * @date: 2018/8/29 22:13
- * @Copyright: 2018 www. .com Inc. All rights reserved.
- * 注意：本内容仅限于西藏佳斯特信息技术有限公司内部传阅，禁止外泄以及用于其他的商业目
+ * @description:
+ * @author: YX
+ * @date: 2020/09/07 11:23
  */
 public class ObjectUtil {
     private static final Logger logger = LoggerFactory.getLogger(ObjectUtil.class);

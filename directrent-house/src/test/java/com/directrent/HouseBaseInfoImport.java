@@ -26,20 +26,20 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @description:
+ * @description: 房源基本信息导入
  * @author: YX
  * @date: 2020/09/02 20:59
  */
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-public class ExcelTest {
+public class HouseBaseInfoImport {
 
     @Autowired
     private HouseBaseInfoDao houseBaseInfoDao;
 
     @Test
-    public void importExcelTest() throws IOException, ExcelException {
+    public void importExcel() throws IOException, ExcelException {
 
         //构建MultipartFile对象
         File file = new File("C:\\Users\\Administrator\\Desktop\\111.xlsx");
@@ -49,10 +49,10 @@ public class ExcelTest {
         List<HouseBaseInfoDTO> houseBaseInfoDTOS = ExcelUtil.readFirstSheetExcel(multipartFile, HouseBaseInfoDTO.class);
         System.out.println("从excel读出"+houseBaseInfoDTOS.size()+"条数据");
 
-        List<HouseBaseInfo> houses = new ArrayList<>();
+        List<com.directrent.house.domain.HouseBaseInfo> houses = new ArrayList<>();
         for (int i = 0; i < houseBaseInfoDTOS.size() ; i++) {
             HouseBaseInfoDTO dto = houseBaseInfoDTOS.get(i);
-            HouseBaseInfo house = new HouseBaseInfo();
+            com.directrent.house.domain.HouseBaseInfo house = new com.directrent.house.domain.HouseBaseInfo();
             house.setId(WorkerUtil.nextId());//id
             house.setName(dto.getName());//名字
             house.setArea(areaConvert(dto.getArea()));//面积

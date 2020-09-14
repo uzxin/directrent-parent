@@ -20,11 +20,9 @@ import java.io.IOException;
 import java.util.*;
 
 /**
- * HttpClient
- * <p>
- * http get、post
- *
- * @author quan
+ * @description: http工具类
+ * @author: YX
+ * @date: 2020/09/07 11:23
  */
 public class HttpClientUtil {
     private static final CloseableHttpClient httpclient = HttpClients.createDefault();

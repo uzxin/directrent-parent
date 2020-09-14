@@ -8,7 +8,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://114.55.28.2:3306/directrent_house?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT&useSSL=false&nullCatalogMeansCurrent=true
+    url: jdbc:mysql://rm-2vc14p10fe07522lheo.mysql.cn-chengdu.rds.aliyuncs.com:3306/directrent_house?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT&useSSL=false&nullCatalogMeansCurrent=true
     username: directrent
     password: directrent
     initialSize: 5 #初始化大小
@@ -52,3 +52,5 @@ mybatis:
   mapper-locations: classpath*:com/directrent/**/*.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #开启驼峰式命名规则自动转换
+    map-underscore-to-camel-case: true

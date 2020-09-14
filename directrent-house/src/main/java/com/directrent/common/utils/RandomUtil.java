@@ -3,12 +3,9 @@ package com.directrent.common.utils;
 import java.util.Random;
 
 /**
- * @PackageName: com.just.butterfly.biz.common.util
- * @Description:
- * @author: traveller
- * @date: 2018/8/30 10:55
- * @Copyright: 2018 www. .com Inc. All rights reserved.
- * 注意：本内容仅限于西藏佳斯特信息技术有限公司内部传阅，禁止外泄以及用于其他的商业目
+ * @description: 随机数生成工具类
+ * @author: YX
+ * @date: 2020/09/07 11:23
  */
 public class RandomUtil {
     private RandomUtil(){}
@@ -29,7 +26,7 @@ public class RandomUtil {
     }
 
     public static void main(String[] args){
-        String randomNum = getRandomNum(4);
+        String randomNum = getRandomNum(18);
         System.out.println(randomNum);
     }
 }

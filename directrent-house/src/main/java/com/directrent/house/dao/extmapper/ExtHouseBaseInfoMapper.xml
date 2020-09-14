@@ -21,4 +21,7 @@
             #{item.doorLockType},#{item.greeningRate},#{item.description},#{item.price},#{item.createUser})
         </foreach>
     </insert>
+    <select id="getById" resultType="com.directrent.house.domain.HouseBaseInfo">
+        SELECT <include refid="Base_Column_List" /> FROM house_base_info WHERE id = #{id}
+    </select>
 </mapper>

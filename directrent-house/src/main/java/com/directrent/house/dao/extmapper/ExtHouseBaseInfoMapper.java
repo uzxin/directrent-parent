@@ -1,6 +1,7 @@
 package com.directrent.house.dao.extmapper;
 
 import com.directrent.house.domain.HouseBaseInfo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -20,4 +21,14 @@ public interface ExtHouseBaseInfoMapper {
      * @date: 2020/9/3 0003 20:07
      */
     int batchInsert(List<HouseBaseInfo> houseBaseInfos);
+
+    /**
+     * 通过id查询
+     *
+     * @param: id
+     * @return: com.directrent.house.domain.HouseBaseInfo
+     * @author: YX
+     * @date: 2020/9/10 0010 23:53
+     */
+    HouseBaseInfo getById(@Param("id") Long id);
 }

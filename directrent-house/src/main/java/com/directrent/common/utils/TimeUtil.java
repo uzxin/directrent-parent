@@ -17,12 +17,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * @PackageName: com.just.butterfly.biz.common.util
- * @Description:
- * @author: traveller
- * @date: 2018/8/24 11:29
- * @Copyright: 2018 www. .com Inc. All rights reserved.
- * 注意：本内容仅限于西藏佳斯特信息技术有限公司内部传阅，禁止外泄以及用于其他的商业目
+ * @description: 时间工具类
+ * @author: YX
+ * @date: 2020/09/10 21:22
  */
 public class TimeUtil {
 
