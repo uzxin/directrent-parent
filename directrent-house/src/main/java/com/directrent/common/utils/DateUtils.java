@@ -1,4 +1,4 @@
-package com.just.butterfly.biz.common.util;
+package com.directrent.common.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
