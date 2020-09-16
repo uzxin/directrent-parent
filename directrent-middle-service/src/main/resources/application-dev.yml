@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: directrent-middle-service
+  devtools:
+    restart:
+      enabled: true
+server:
+  port: 8002
+eureka:
+  client:
+    service-url:
+      defaultZone: http://114.55.28.2:8000/eureka/

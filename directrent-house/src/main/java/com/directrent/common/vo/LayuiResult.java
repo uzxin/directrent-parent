@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @description: layui返回对象统一封装
@@ -20,7 +21,7 @@ public class LayuiResult {
     /**
      * 返回说明
      **/
-    private String msg = "";
+    private String msg = "操作成功";
     /**
      * 条数
      **/
@@ -83,6 +84,10 @@ public class LayuiResult {
 
     public static LayuiResult ok(String msg, Object data) {
         return new LayuiResult(0, msg, data);
+    }
+
+    public static LayuiResult ok(int count, Object data) {
+        return new LayuiResult(0, "操作成功", count, data);
     }
 
 }

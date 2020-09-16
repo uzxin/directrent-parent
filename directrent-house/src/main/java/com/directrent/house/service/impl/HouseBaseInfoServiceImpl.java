@@ -3,6 +3,7 @@ package com.directrent.house.service.impl;
 import com.directrent.house.dao.HouseBaseInfoDao;
 import com.directrent.house.domain.HouseBaseInfo;
 import com.directrent.house.service.HouseBaseInfoService;
+import com.directrent.house.vo.req.HouseBaseInfoReq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +21,13 @@ public class HouseBaseInfoServiceImpl implements HouseBaseInfoService {
     private HouseBaseInfoDao houseBaseInfoDao;
 
     @Override
-    public List<HouseBaseInfo> list() {
-        return houseBaseInfoDao.getAll();
+    public List<HouseBaseInfo> page(HouseBaseInfoReq houseBaseInfoReq) {
+        return houseBaseInfoDao.getBycondition(houseBaseInfoReq);
+    }
+
+    @Override
+    public int count() {
+        return houseBaseInfoDao.count();
     }
 
 }

@@ -31,4 +31,13 @@ public interface ExtHouseBaseInfoMapper {
      * @date: 2020/9/10 0010 23:53
      */
     HouseBaseInfo getById(@Param("id") Long id);
+
+    /**
+     * 计数
+     *
+     * @return: int
+     * @author: YX
+     * @date: 2020/09/16 21:46
+     */
+    int count();
 }

@@ -24,4 +24,7 @@
     <select id="getById" resultType="com.directrent.house.domain.HouseBaseInfo">
         SELECT <include refid="Base_Column_List" /> FROM house_base_info WHERE id = #{id}
     </select>
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM house_base_info
+    </select>
 </mapper>

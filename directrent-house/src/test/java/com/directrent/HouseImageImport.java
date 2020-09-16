@@ -7,6 +7,7 @@ import com.directrent.common.utils.excel.ExcelUtil;
 import com.directrent.excelData.dao.mapper.ExcelMapper;
 import com.directrent.excelData.domain.Excel;
 import com.directrent.excelData.dto.ExcelDataDTO;
+import com.directrent.house.dao.HouseBaseInfoDao;
 import com.directrent.house.dao.extmapper.ExtHouseBaseInfoMapper;
 import com.directrent.house.dao.mapper.HouseImageMapper;
 import com.directrent.house.domain.HouseBaseInfo;
@@ -48,6 +49,8 @@ public class HouseImageImport {
     private ExcelMapper excelMapper;
     @Autowired
     private HouseImageMapper houseImageMapper;
+    @Autowired
+    private HouseBaseInfoDao houseBaseInfoDao;
 
     @Test
     public void image() throws IOException {
@@ -135,7 +138,7 @@ public class HouseImageImport {
     @Test
     public void test2() throws Exception {
         //读取房源id
-        List<HouseBaseInfo> houseBaseInfos = houseBaseInfoService.list();
+        List<HouseBaseInfo> houseBaseInfos = houseBaseInfoDao.getAll();
         Long[] houseIds = new Long[2000];
         for (int i = 0; i < houseBaseInfos.size(); i++) {
             houseIds[i] = houseBaseInfos.get(i).getId();
