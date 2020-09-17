@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.directrent.house.dao.mapper.HouseBaseInfoMapper">
+  <resultMap id="BaseResultMap" type="com.directrent.house.domain.HouseBaseInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="area" jdbcType="DECIMAL" property="area" />
+    <result column="towards" jdbcType="VARCHAR" property="towards" />
+    <result column="unit_type" jdbcType="VARCHAR" property="unitType" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="floor" jdbcType="VARCHAR" property="floor" />
+    <result column="elevator" jdbcType="TINYINT" property="elevator" />
+    <result column="build_year" jdbcType="INTEGER" property="buildYear" />
+    <result column="door_lock_type" jdbcType="VARCHAR" property="doorLockType" />
+    <result column="greening_rate" jdbcType="INTEGER" property="greeningRate" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, name, area, towards, unit_type, position, floor, elevator, build_year, door_lock_type, 
+    greening_rate, description, price, create_time, create_user, update_time
+  </sql>
+  <select id="selectByExample" parameterType="com.directrent.house.domain.HouseBaseInfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from house_base_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from house_base_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from house_base_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.directrent.house.domain.HouseBaseInfoExample">
+    delete from house_base_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.directrent.house.domain.HouseBaseInfo">
+    insert into house_base_info (id, name, area, 
+      towards, unit_type, position, 
+      floor, elevator, build_year, 
+      door_lock_type, greening_rate, description, 
+      price, create_time, create_user, 
+      update_time)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{area,jdbcType=DECIMAL}, 
+      #{towards,jdbcType=VARCHAR}, #{unitType,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
+      #{floor,jdbcType=VARCHAR}, #{elevator,jdbcType=TINYINT}, #{buildYear,jdbcType=INTEGER}, 
+      #{doorLockType,jdbcType=VARCHAR}, #{greeningRate,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, 
+      #{price,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.directrent.house.domain.HouseBaseInfo">
+    insert into house_base_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="towards != null">
+        towards,
+      </if>
+      <if test="unitType != null">
+        unit_type,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="floor != null">
+        floor,
+      </if>
+      <if test="elevator != null">
+        elevator,
+      </if>
+      <if test="buildYear != null">
+        build_year,
+      </if>
+      <if test="doorLockType != null">
+        door_lock_type,
+      </if>
+      <if test="greeningRate != null">
+        greening_rate,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=DECIMAL},
+      </if>
+      <if test="towards != null">
+        #{towards,jdbcType=VARCHAR},
+      </if>
+      <if test="unitType != null">
+        #{unitType,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="floor != null">
+        #{floor,jdbcType=VARCHAR},
+      </if>
+      <if test="elevator != null">
+        #{elevator,jdbcType=TINYINT},
+      </if>
+      <if test="buildYear != null">
+        #{buildYear,jdbcType=INTEGER},
+      </if>
+      <if test="doorLockType != null">
+        #{doorLockType,jdbcType=VARCHAR},
+      </if>
+      <if test="greeningRate != null">
+        #{greeningRate,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.directrent.house.domain.HouseBaseInfoExample" resultType="java.lang.Long">
+    select count(*) from house_base_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update house_base_info
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.area != null">
+        area = #{record.area,jdbcType=DECIMAL},
+      </if>
+      <if test="record.towards != null">
+        towards = #{record.towards,jdbcType=VARCHAR},
+      </if>
+      <if test="record.unitType != null">
+        unit_type = #{record.unitType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.position != null">
+        position = #{record.position,jdbcType=VARCHAR},
+      </if>
+      <if test="record.floor != null">
+        floor = #{record.floor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.elevator != null">
+        elevator = #{record.elevator,jdbcType=TINYINT},
+      </if>
+      <if test="record.buildYear != null">
+        build_year = #{record.buildYear,jdbcType=INTEGER},
+      </if>
+      <if test="record.doorLockType != null">
+        door_lock_type = #{record.doorLockType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.greeningRate != null">
+        greening_rate = #{record.greeningRate,jdbcType=INTEGER},
+      </if>
+      <if test="record.description != null">
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null">
+        price = #{record.price,jdbcType=DECIMAL},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createUser != null">
+        create_user = #{record.createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update house_base_info
+    set id = #{record.id,jdbcType=BIGINT},
+      name = #{record.name,jdbcType=VARCHAR},
+      area = #{record.area,jdbcType=DECIMAL},
+      towards = #{record.towards,jdbcType=VARCHAR},
+      unit_type = #{record.unitType,jdbcType=VARCHAR},
+      position = #{record.position,jdbcType=VARCHAR},
+      floor = #{record.floor,jdbcType=VARCHAR},
+      elevator = #{record.elevator,jdbcType=TINYINT},
+      build_year = #{record.buildYear,jdbcType=INTEGER},
+      door_lock_type = #{record.doorLockType,jdbcType=VARCHAR},
+      greening_rate = #{record.greeningRate,jdbcType=INTEGER},
+      description = #{record.description,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=DECIMAL},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      create_user = #{record.createUser,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.directrent.house.domain.HouseBaseInfo">
+    update house_base_info
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=DECIMAL},
+      </if>
+      <if test="towards != null">
+        towards = #{towards,jdbcType=VARCHAR},
+      </if>
+      <if test="unitType != null">
+        unit_type = #{unitType,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="floor != null">
+        floor = #{floor,jdbcType=VARCHAR},
+      </if>
+      <if test="elevator != null">
+        elevator = #{elevator,jdbcType=TINYINT},
+      </if>
+      <if test="buildYear != null">
+        build_year = #{buildYear,jdbcType=INTEGER},
+      </if>
+      <if test="doorLockType != null">
+        door_lock_type = #{doorLockType,jdbcType=VARCHAR},
+      </if>
+      <if test="greeningRate != null">
+        greening_rate = #{greeningRate,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.directrent.house.domain.HouseBaseInfo">
+    update house_base_info
+    set name = #{name,jdbcType=VARCHAR},
+      area = #{area,jdbcType=DECIMAL},
+      towards = #{towards,jdbcType=VARCHAR},
+      unit_type = #{unitType,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      floor = #{floor,jdbcType=VARCHAR},
+      elevator = #{elevator,jdbcType=TINYINT},
+      build_year = #{buildYear,jdbcType=INTEGER},
+      door_lock_type = #{doorLockType,jdbcType=VARCHAR},
+      greening_rate = #{greeningRate,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.directrent.house.domain.HouseBaseInfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from house_base_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

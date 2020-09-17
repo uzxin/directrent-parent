@@ -5,3 +5,7 @@ auth模块：9005
 common模块：9001
 
 gateway模块：9002
+
+house模块：8001
+
+middle-service模块：8002

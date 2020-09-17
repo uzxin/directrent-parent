@@ -1,0 +1,5 @@
+FROM java:8
+MAINTAINER uzxin
+ADD directrent-house-0.0.1-SNAPSHOT.jar directrent-house.jar
+EXPOSE 8001
+ENTRYPOINT ["java","-jar","directrent-house.jar"]
