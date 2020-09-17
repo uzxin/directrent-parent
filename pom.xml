@@ -31,6 +31,7 @@
         <alibaba.fastJson.version>1.2.47</alibaba.fastJson.version>
         <apache.httpclient.version>4.5.2</apache.httpclient.version>
         <joda.version>2.9.9</joda.version>
+        <swagger.version>2.9.2</swagger.version>
     </properties>
 
     <dependencies>
@@ -133,6 +134,17 @@
                 <groupId>joda-time</groupId>
                 <artifactId>joda-time</artifactId>
                 <version>${joda.version}</version>
+            </dependency>
+            <!-- swagger文档 -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
