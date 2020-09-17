@@ -1,0 +1,6 @@
+示范：<i class="layui-icon layui-icon-home"></i>
+
+layui-icon-left 向左的箭头
+layui-icon-cart-simple 购物车
+layui-icon-set-fill 设置符号
+layui-icon-reply-fill 消息符号
