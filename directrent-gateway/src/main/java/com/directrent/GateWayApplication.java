@@ -24,11 +24,11 @@ public class GateWayApplication {
         log.info("gateway模块启动成功");
     }
 
-    /*@Bean
+    @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
                 .route("path_route", r -> r.path("/about")
                         .uri("http://ityouknow.com"))
                 .build();
-    }*/
+    }
 }
