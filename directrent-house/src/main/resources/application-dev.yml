@@ -44,6 +44,11 @@ eureka:
   client:
     service-url:
       defaultZone: http://114.55.28.2:8000/eureka/
+  instance:
+    #不加的话我看过eureka注册界面，是以docker容器的container id注册过去的，譬如container id为abcde，
+    #那么当访问该微服务时，eureka以http://abcde/xxx，去访问的，当然是访问不到该服务.
+    #配置下面的选项后，就会以内网ip加端口去访问就能访问到了。
+    prefer-ip-address: true
 feign:
   hystrix:
     enabled: true
