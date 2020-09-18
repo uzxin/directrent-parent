@@ -49,6 +49,7 @@ eureka:
     #那么当访问该微服务时，eureka以http://abcde/xxx，去访问的，当然是访问不到该服务.
     #配置下面的选项后，就会以内网ip加端口去访问就能访问到了。
     prefer-ip-address: true
+    instance-id: ${HOST}:${PORT0}
 feign:
   hystrix:
     enabled: true
