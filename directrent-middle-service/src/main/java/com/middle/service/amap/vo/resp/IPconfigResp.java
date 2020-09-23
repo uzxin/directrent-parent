@@ -1,9 +1,6 @@
 package com.middle.service.amap.vo.resp;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 /**
  * @description: IP定位返回对象
@@ -13,21 +10,9 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
-public class IPconfigResp {
-
-    /**
-     * 返回结果状态值,0-失败，1-成功
-     */
-    private int status;
-    /**
-     * 返回状态说明，成功时返回OK，失败时返回错误原因
-     */
-    private String info;
-    /**
-     * 状态码，详情参阅info状态表
-     */
-    private String infocode;
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+public class IPconfigResp extends BaseResp {
     /**
      * 省份名称
      * 若为直辖市则显示直辖市名称；

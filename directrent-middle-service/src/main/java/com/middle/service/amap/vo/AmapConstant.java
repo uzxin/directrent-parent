@@ -10,5 +10,5 @@ public class AmapConstant {
     /**
      * 请求服务权限标识
      */
-    public static final String key = "b4041f448e850b99ce257328c00ee71e";
+    public static final String KEY = "b4041f448e850b99ce257328c00ee71e";
 }

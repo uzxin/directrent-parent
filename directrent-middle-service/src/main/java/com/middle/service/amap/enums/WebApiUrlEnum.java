@@ -13,7 +13,10 @@ public enum WebApiUrlEnum {
     /**
      * 根据ip地址获取地理位置
      */
-    ipconfig("https://restapi.amap.com/v3/ip", "get", "https://restapi.amap.com/v3/ip?ip=114.247.50.2&output=xml&key=<用户的key>", IPconfigReq.class, IPconfigResp.class);
+    IP_CONFIG("https://restapi.amap.com/v3/ip", "get",
+            "https://restapi.amap.com/v3/ip?ip=114.247.50.2&output=xml&key=<用户的key>", IPconfigReq.class, IPconfigResp.class),
+    WEATHER_INFO("https://restapi.amap.com/v3/weather/weatherInfo", "get",
+            "https://restapi.amap.com/v3/weather/weatherInfo?city=110101&key=<用户key>", IPconfigReq.class, IPconfigResp.class);
 
     /**
      * url地址

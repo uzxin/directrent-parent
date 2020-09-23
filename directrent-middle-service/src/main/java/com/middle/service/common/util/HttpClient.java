@@ -1,6 +1,7 @@
 package com.middle.service.common.util;
 
 import com.middle.service.common.vo.HttpClientResult;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.config.RequestConfig;
@@ -21,6 +22,7 @@ import java.util.*;
  * @author: YX
  * @date: 2020/9/22 16:31
  */
+@Slf4j
 public class HttpClient {
 
     /**
@@ -83,10 +85,11 @@ public class HttpClient {
         if (params != null) {
             Set<Map.Entry<String, String>> entrySet = params.entrySet();
             for (Map.Entry<String, String> entry : entrySet) {
-                uriBuilder.setParameter(entry.getKey(), entry.getValue());
+                //参数可能携带引号，根本原因时object转map的过程中携带了引号，在url中引号会被替换成%22
+                uriBuilder.setParameter(entry.getKey(), entry.getValue().replace("\"", ""));
             }
         }
-
+        log.info("发起了http请求，URL:{}", uriBuilder);
         // 创建http对象
         HttpGet httpGet = new HttpGet(uriBuilder.build());
         /**
@@ -331,6 +334,7 @@ public class HttpClient {
             if (httpResponse.getEntity() != null) {
                 content = EntityUtils.toString(httpResponse.getEntity(), ENCODING);
             }
+            log.info("返回内容：{}", content);
             return new HttpClientResult(httpResponse.getStatusLine().getStatusCode(), content);
         }
         return new HttpClientResult(HttpStatus.SC_INTERNAL_SERVER_ERROR);

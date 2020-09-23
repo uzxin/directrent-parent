@@ -1,11 +1,6 @@
 package com.middle.service.amap.vo.req;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-
-import javax.validation.constraints.NotNull;
+import lombok.*;
 
 /**
  * @description: IP定位请求对象
@@ -15,14 +10,9 @@ import javax.validation.constraints.NotNull;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
-public class IPconfigReq {
-
-    /**
-     * 请求服务权限标识(必填)
-     */
-    @NotNull(message = "key不能为空")
-    private String key;
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+public class IPconfigReq extends BaseReq {
     /**
      * ip地址(选填)
      */
