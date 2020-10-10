@@ -89,7 +89,7 @@ public class HttpClient {
                 uriBuilder.setParameter(entry.getKey(), entry.getValue().replace("\"", ""));
             }
         }
-        log.info("发起了http请求，URL:{}", uriBuilder);
+        log.info("发起了http请求，URL:{}，请求方式：GET", uriBuilder);
         // 创建http对象
         HttpGet httpGet = new HttpGet(uriBuilder.build());
         /**

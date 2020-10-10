@@ -24,8 +24,4 @@ public class WeatherInfoReq extends BaseReq{
      * 气象类型(选填)，base-返回实况天气all-返回预报天气，默认为base
      */
     private String extensions;
-    /**
-     * 返回格式(选填)，JSON或者XML
-     */
-    private String output;
 }

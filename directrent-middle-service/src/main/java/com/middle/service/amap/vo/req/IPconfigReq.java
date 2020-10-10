@@ -21,8 +21,4 @@ public class IPconfigReq extends BaseReq {
      * 签名(选填)，选择数字签名认证的付费用户必填
      */
     private String sig;
-    /**
-     * 返回格式(选填)，JSON或者XML，默认为JSON
-     */
-    private String output;
 }

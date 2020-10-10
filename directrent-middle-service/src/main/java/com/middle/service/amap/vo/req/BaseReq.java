@@ -20,5 +20,9 @@ public class BaseReq implements Serializable {
      */
     @NotNull(message = "key不能为空")
     private String key;
+    /**
+     * 返回格式(选填)，JSON或者XML，默认为JSON
+     */
+    private String output;
 
 }

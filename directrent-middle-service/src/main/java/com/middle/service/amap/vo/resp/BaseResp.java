@@ -25,4 +25,8 @@ public class BaseResp implements Serializable {
      * 状态码，详情参阅info状态表
      */
     private String infocode;
+    /**
+     * 返回结果总数目
+     */
+    private int count;
 }

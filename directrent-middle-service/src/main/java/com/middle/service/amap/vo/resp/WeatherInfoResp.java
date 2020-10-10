@@ -17,10 +17,6 @@ import java.util.List;
 public class WeatherInfoResp extends BaseResp {
 
     /**
-     * 返回结果总数目
-     */
-    private int count;
-    /**
      * 实况天气数据信息
      */
     private List<LiveWeacher> lives;
