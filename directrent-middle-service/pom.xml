@@ -24,6 +24,11 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
         </dependency>
+        <!-- apache httpclient组件 -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
         <!-- 七牛云SDK -->
         <dependency>
             <groupId>com.qiniu</groupId>
@@ -45,39 +50,6 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
-        <resources>
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.xml</include>
-                    <include>**/*.properties</include>
-                    <include>**/*.yml</include>
-                </includes>
-                <filtering>true</filtering>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-                <!-- 处理文件时替换文件中的变量 -->
-                <filtering>true</filtering>
-                <excludes>
-                    <!-- 打包时排除文件 -->
-                    <exclude>application.yml</exclude>
-                    <exclude>application-dev.yml</exclude>
-                    <exclude>application-test.yml</exclude>
-                    <exclude>application-pre.yml</exclude>
-                    <exclude>application-pro.yml</exclude>
-                </excludes>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-                <!-- 打包时所包含的文件 -->
-                <includes>
-                    <include>application.yml</include>
-                    <include>application-${profileActive}.yml</include>
-                </includes>
-            </resource>
-        </resources>
     </build>
 
 

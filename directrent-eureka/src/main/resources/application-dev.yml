@@ -17,3 +17,6 @@ eureka:
     #默认是http://localhost:8761/eureka
     service-url:
       defaultZone: http://localhost:${server.port}/eureka/
+  #关闭自我保护机制，保证不可用服务及时踢出
+  server:
+    enable-self-preservation: false
