@@ -45,13 +45,8 @@ public class FtpUtil {
      * @date: 2020/10/12 17:44
      */
     public boolean uploadFile(String path, String originFileName, InputStream input) {
-        log.info("FTP开始上传文件，文件名:{}", originFileName);
         boolean success = true;
         FTPClient ftp = new FTPClient();
-        //设置编码
-        ftp.setControlEncoding("utf-8");
-        //启动被动模式
-        ftp.enterLocalPassiveMode();
         try {
             // 连接FTP服务器
             ftp.connect(FTP_ADDRESS, FTP_PORT);
@@ -67,18 +62,23 @@ public class FtpUtil {
                 log.error("FTP服务器拒绝连接,返回状态码{},服务器{},端口{},用户名{},密码{}",reply,FTP_ADDRESS,FTP_PORT,FTP_USERNAME,FTP_PASSWORD);
                 success = false;
             }
-            //转到上传文件的根目录
-            if(!ftp.changeWorkingDirectory(FTP_BASEPATH)) {
-                throw new RuntimeException("根目录不存在，需要创建");
-            }
+            //启动被动模式
+            ftp.enterLocalPassiveMode();
+            //设置编码
+            ftp.setControlEncoding("utf-8");
             // 设置文件类型为二进制
             ftp.setFileType(FTPClient.BINARY_FILE_TYPE);
             // 修改操作空间
             ftp.changeWorkingDirectory(FTP_BASEPATH);
             // 传输文件为流的形式
             ftp.setFileTransferMode(FTP.BINARY_FILE_TYPE);
-            //判断是否存在目录,不存在则创建（但是目前的ftp账号好像没有权限创建目录）
-            /*if(!ftp.changeWorkingDirectory(path)) {
+            //检查上传路径是否存在
+            if(path.startsWith("/")){
+                path = path.substring(1);
+            }
+            if(!ftp.changeWorkingDirectory(FTP_BASEPATH+path)) {
+                //throw new RuntimeException("上传目录不存在："+FTP_BASEPATH+path);
+                log.error("上传目录不存在，开始创建目录：{}", FTP_BASEPATH+path);
                 String[] dirs = path.split("/");
                 //创建目录
                 for (String dir : dirs) {
@@ -94,12 +94,15 @@ public class FtpUtil {
                         ftp.changeWorkingDirectory(dir);
                     }
                 }
-            }*/
-            // 开始上传文件
+            }
+            String workingDirectory = ftp.printWorkingDirectory();
+            log.info("FTP开始上传文件====上传路径：{},文件名:{}", workingDirectory,originFileName);
             boolean upload_flag = ftp.storeFile(originFileName, input);
             if (!upload_flag){
-                log.error("FTP上传文件失败");
+                log.error("FTP上传文件失败====上传路径：{}，文件：{}", workingDirectory,originFileName);
                 success = false;
+            }else {
+                log.info("上传成功=====上传路径：{},文件名:{}", workingDirectory,originFileName);
             }
             input.close();
             ftp.logout();
@@ -143,33 +146,40 @@ public class FtpUtil {
             if(!FTPReply.isPositiveCompletion(ftp.getReplyCode())) {
                 throw new RuntimeException("FTP服务器拒绝连接");
             }
-
-            int index=filename.lastIndexOf("/");
             //获取文件的路径
-            String path=filename.substring(0, index);
-            System.out.println("path:"+path);
+            String path = "";
+            int index=filename.lastIndexOf("/");
+            if (-1 != index){
+                path=filename.substring(0, index);
+            }
             //获取文件名
             String name=filename.substring(index+1);
-            System.out.println("name:"+name);
             //判断是否存在目录
             if(!ftp.changeWorkingDirectory(FTP_BASEPATH+path)) {
                 throw new RuntimeException("文件路径不存在："+FTP_BASEPATH+path);
             }
             //获取该目录所有文件
             FTPFile[] files=ftp.listFiles();
+            if (null == files || files.length == 0){
+                throw new RuntimeException("该目录下没有任何文件："+FTP_BASEPATH+path);
+            }
+            Boolean flag = false;
             for (FTPFile file : files) {
-                //判断是否有目标文件
-                //System.out.println("文件名"+file.getName()+"---"+name);
                 if(file.getName().equals(name)) {
                     //如果找到，将目标文件复制到本地
                     File localFile =new File(localPath+"/"+file.getName());
+                    log.info("文件下载成功，服务器路径：{}，目标路径：{}",FTP_BASEPATH+path+"/"+file.getName(),localPath+"/"+file.getName());
                     OutputStream out=new FileOutputStream(localFile);
                     ftp.retrieveFile(file.getName(), out);
                     out.close();
+                    flag = true;
                 }
             }
             ftp.logout();
-            return true;
+            if (!flag){
+                log.error("没有找到该文件,服务器路径：{}",FTP_BASEPATH+path+"/"+name);
+            }
+            return flag;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }finally {

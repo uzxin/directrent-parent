@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @description:
+ * @description: 上传文件
  * @author: YX
  * @date: 2020/10/12 15:06
  */
@@ -23,13 +23,24 @@ public class UploadService {
     @Autowired
     private FtpUtil ftpUtil;
 
+    /**
+     * 上传单个文件
+     *
+     * @param: path
+     * @param: file
+     * @param: request
+     * @return: java.util.Map<java.lang.String, java.lang.String>
+     * @author: YX
+     * @date: 2020/10/13 15:00
+     */
     public Map<String, String> upfile(String path, @RequestParam("file") MultipartFile file, HttpServletRequest request) throws IOException {
-        Map<String, String> map = new HashMap<>();
+        Map<String, String> map = new HashMap<>(3);
         map.put("code", "0");
         map.put("msg", "上传文件失败");
         String fileName = file.getOriginalFilename();//获取文件名
         String suffixName = fileName.substring(fileName.lastIndexOf("."));//获取文件的后缀名
-        //文件重命名
+
+        //todo 文件重命名
 
         InputStream inputStream = file.getInputStream();
         String filePath = null;
@@ -37,25 +48,11 @@ public class UploadService {
         //@Autowired  private FtpUtil ftpUtil;service层上面引入了这个方法。
         Boolean flag = ftpUtil.uploadFile(path, fileName, inputStream);//主要就是这里实现了ftp的文件上传
         if (flag) {
-            //log.info("上传文件成功!");
-            filePath = ftpUtil.FTP_BASEPATH + fileName;
+            filePath = ftpUtil.FTP_BASEPATH +path +"/" + fileName;
             map.put("code", "1");
             map.put("msg", "上传文件成功");
         }
         map.put("path", filePath);
-        System.out.println(map);
-        return map;
-    }
-
-    public Map<String, String> downFile(String filename, String localPath) throws IOException {
-        Map<String, String> map = new HashMap<>();
-        map.put("code", "0");
-        map.put("msg", "下载文件失败");
-        Boolean flag = ftpUtil.downloadFile(filename, localPath);
-        if (flag) {
-            map.put("code", "1");
-            map.put("msg", "下载文件成功");
-        }
         System.out.println(map);
         return map;
     }

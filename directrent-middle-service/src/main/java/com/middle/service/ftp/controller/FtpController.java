@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.middle.service.ftp.service.DownLoadService;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.Map;
@@ -20,6 +21,8 @@ public class FtpController {
 
     @Autowired
     private UploadService uploadService;
+    @Autowired
+    private DownLoadService downLoadService;
 
     @PostMapping("/upload")
     public Map<String, String> uploadfile(String path,@RequestParam("file") MultipartFile file, HttpServletRequest request) throws IOException {
@@ -29,7 +32,7 @@ public class FtpController {
     @GetMapping("/down")
     public Map<String, String> downFile(String filename, String localPath) throws IOException {
         localPath = "C:\\Users\\游鑫\\Desktop";
-        return uploadService.downFile(filename, localPath);
+        return downLoadService.downFile(filename, localPath);
     }
 
 }
