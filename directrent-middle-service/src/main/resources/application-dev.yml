@@ -7,6 +7,14 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
+  rabbitmq:
+    host: 114.55.28.2
+    port: 5672
+    virtual-host: /
+    username: directrent
+    password: directrent
+    publisher-confirms: true #消息发送到交换器确认
+    publisher-returns: true #消息发送到队列确认
 server:
   port: 8002
 eureka:
