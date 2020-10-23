@@ -8,11 +8,8 @@ import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 
 /**
- * @project: directrent-parent
  * @author: YX
  * @date: 2020/7/28 16:26
- * @copyright:
- * @version: 1.0
  * @description:
  */
 @SpringBootApplication
