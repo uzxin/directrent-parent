@@ -14,6 +14,7 @@ import springfox.documentation.spring.web.plugins.Docket;
  * @description: swagger基础配置
  * @author: YX
  * @date: 2020/9/17 17:10
+ * 默认访问路径为http://localhost:8001/swagger-ui.html
  */
 @Configuration
 public class BaseConfig {
@@ -21,6 +22,7 @@ public class BaseConfig {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("房源信息模块")
                 .apiInfo(getApiInfo())
                 // .pathMapping("/")// base，最终调用接口后会和paths拼接在一起
                 .select()

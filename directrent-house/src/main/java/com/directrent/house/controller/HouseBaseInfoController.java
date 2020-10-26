@@ -37,7 +37,7 @@ public class HouseBaseInfoController {
      */
     @GetMapping("page")
     @ApiOperation(value = "分页查询", notes = "page默认为1，limit默认为10")
-    public LayuiResult page(@ApiParam(name = "房屋基本信息请求对象") HouseBaseInfoReq houseBaseInfoReq){
+    public LayuiResult page(HouseBaseInfoReq houseBaseInfoReq){
         //layui框架前端自动分页需要从后端获取总数
         int count = houseBaseInfoService.count();
         List<HouseBaseInfo> houseBaseInfos = houseBaseInfoService.page(houseBaseInfoReq);

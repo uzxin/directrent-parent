@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <conversionRule conversionWord="justLogPrefix" converterClass="com.just.butterfly.common.config.JustPrefixLogConfig" />
-    <property name="PATTERN" value="%justLogPrefix %d{yyyy-MM-dd HH:mm:ss.SSS} [%level] [%thread] [%logger{36}] - %msg%n"/>
 
+
+    <conversionRule conversionWord="LogPrefix" converterClass="com.directrent.common.config.applicaition.PrefixLogConfig" />
+
+    <property name="PATTERN" value="%LogPrefix %d{yyyy-MM-dd HH:mm:ss.SSS} [%level] [%thread] [%logger{36}] - %msg%n"/>
     <property name="FILE-PATH" value="/data/logs"/>
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
@@ -13,9 +15,9 @@
     </appender>
 
     <appender name="APPLICATION-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${FILE-PATH}/butterfly-biz/application/application.log</file>
+        <file>${FILE-PATH}/house/application/application.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${FILE-PATH}/butterfly-biz/application/application.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${FILE-PATH}/directrent-house/application/application.%d{yyyy-MM-dd}.log</fileNamePattern>
             <MaxHistory>100</MaxHistory>
         </rollingPolicy>
         <encoder>
@@ -25,7 +27,7 @@
     </appender>
 
     <springProfile name="local">
-        <logger name="com.just" level="DEBUG" additivity="false">
+        <logger name="com.directrent" level="DEBUG" additivity="false">
             <appender-ref ref="APPLICATION-FILE"/>
             <appender-ref ref="CONSOLE"/>
         </logger>
@@ -34,8 +36,8 @@
         </root>
     </springProfile>
 
-    <springProfile name="dev,test,pre">
-        <logger name="com.just" level="DEBUG" additivity="false">
+    <springProfile name="dev,test,pre,junit">
+        <logger name="com.directrent" level="DEBUG" additivity="false">
             <appender-ref ref="APPLICATION-FILE"/>
             <appender-ref ref="CONSOLE"/>
         </logger>
@@ -46,14 +48,23 @@
     </springProfile>
 
     <springProfile name="pro">
-        <logger name="com.just" level="INFO" additivity="false">
+        <logger name="com.directrent" level="INFO" additivity="false">
             <appender-ref ref="APPLICATION-FILE"/>
-            <appender-ref ref="CONSOLE"/>
         </logger>
         <root level="INFO">
             <appender-ref ref="APPLICATION-FILE"/>
-            <appender-ref ref="CONSOLE"/>
         </root>
     </springProfile>
+
+    <!--输出到mysql数据库的appender配置     -->
+    <!--<appender name="db" class="ch.qos.logback.classic.db.DBAppender">
+        <connectionSource
+                class="ch.qos.logback.core.db.DriverManagerConnectionSource">
+            <driverClass>com.mysql.jdbc.Driver</driverClass>
+            <url>jdbc:mysql://120.0.0.1:3306/logback_member?characterEncoding=utf8</url>
+            <user>root</user>
+            <password>123456789</password>
+        </connectionSource>
+    </appender>-->
 
 </configuration>

@@ -11,12 +11,19 @@ spring:
     host: 114.55.28.2
     port: 5672
     virtual-host: /
-    username: directrent
-    password: directrent
+    username: admin
+    password: admin
     publisher-confirms: true #消息发送到交换器确认
     publisher-returns: true #消息发送到队列确认
+    mqtt:
+      url: tcp://114.55.28.2:1883
+      username: admin
+      password: admin
+      defaultTopic: testTopic
 server:
   port: 8002
+  tomcat:
+    uri-encoding: utf-8
 eureka:
   client:
     service-url:

@@ -22,11 +22,11 @@ public class HouseBaseInfoReq implements Serializable {
     /**
      * 当前页
      */
-    @ApiModelProperty(value = "当前页，默认为1")
+    @ApiModelProperty(value = "当前页，默认为1", example = "1")
     private int page;
     /**
      * 分页大小
      */
-    @ApiModelProperty(value = "分页大小，默认为10")
+    @ApiModelProperty(value = "分页大小，默认为10", example = "10")
     private int limit;
 }
