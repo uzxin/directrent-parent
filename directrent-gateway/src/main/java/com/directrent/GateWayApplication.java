@@ -24,8 +24,8 @@ public class GateWayApplication {
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
-                .route("path_route", r -> r.path("/about")
-                        .uri("http://ityouknow.com"))
+                .route("path_route", r -> r.path("/uzxin")
+                        .uri("http://www.uzxin.top"))
                 .build();
     }
 }

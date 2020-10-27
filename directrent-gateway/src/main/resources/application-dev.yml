@@ -9,9 +9,19 @@ spring:
         locator:
           #是否与服务注册于发现组件进行结合，通过 serviceId 转发到具体的服务实例。
           #默认为 false，设为 true 便开启通过服务中心的自动根据 serviceId 创建路由的功能。
+          #访问路径为：http://ip:9002/directrent-house/*****
           enabled: true
           #开启小写
           lower-case-service-id: true
+      routes:
+        - id: directrent-house # 唯一id ，随便起，不能重复
+          uri: lb://directrent-house # 匹配注册中心的服务
+          predicates:
+            - Path=/directrent-house/** # 匹配的规则
+          filters:
+            # 去掉路由前缀，访问 localhost：8088/test/v2/api 转发的就是 localhost:8089/v2/api
+            # 1 : 代表剥离路径的个数
+            - StripPrefix=1
 eureka:
   client:
     service-url:

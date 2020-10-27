@@ -12,8 +12,6 @@
         <setting name="defaultStatementTimeout" value="10000"/>
         <!--支持数据库字段驼峰转换-->
         <setting name="mapUnderscoreToCamelCase" value="true" />
-       <!-- &lt;!&ndash; 打印查询语句 &ndash;&gt;
-        <setting name="logImpl" value="SLF4J" />-->
     </settings>
 
     <!--<plugins>-->

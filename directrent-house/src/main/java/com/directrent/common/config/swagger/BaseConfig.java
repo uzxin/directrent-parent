@@ -27,7 +27,7 @@ public class BaseConfig {
                 // .pathMapping("/")// base，最终调用接口后会和paths拼接在一起
                 .select()
                 // .paths(Predicates.or(PathSelectors.regex("/api/.*")))//过滤的接口
-                .apis(RequestHandlerSelectors.basePackage("com.directrent")) //过滤的接口
+                .apis(RequestHandlerSelectors.basePackage("com.directrent.house")) //过滤的接口
                 .paths(PathSelectors.any())
                 .build();
     }

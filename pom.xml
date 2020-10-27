@@ -32,6 +32,7 @@
         <apache.httpclient.version>4.5.2</apache.httpclient.version>
         <joda.version>2.9.9</joda.version>
         <swagger.version>2.9.2</swagger.version>
+        <spring4all.version>1.9.1.RELEASE</spring4all.version>
     </properties>
 
     <dependencies>
@@ -145,6 +146,12 @@
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger-ui</artifactId>
                 <version>${swagger.version}</version>
+            </dependency>
+            <!-- spring4all,springboot已经整合了swagger -->
+            <dependency>
+                <groupId>com.spring4all</groupId>
+                <artifactId>swagger-spring-boot-starter</artifactId>
+                <version>${spring4all.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
